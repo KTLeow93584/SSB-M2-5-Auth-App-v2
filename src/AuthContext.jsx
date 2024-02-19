@@ -1,4 +1,4 @@
-import { useState, createContext, useContext } from 'react';
+import { createContext, useContext } from 'react';
 import useLocalStorage from 'use-local-storage';
 
 import users from './UserList.jsx';

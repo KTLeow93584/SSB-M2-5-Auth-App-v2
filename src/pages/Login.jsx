@@ -54,7 +54,8 @@ function RenderLoginForm(user, authenticateUser) {
                     event.preventDefault();
                     const result = authenticateUser(username, password);
 
-                    navigate(result ? "/dashboard" : "/login");
+                    if (result)
+                        navigate("/dashboard");
                 }}>
                     <Form.Group className="mb-3">
                         <Form.Label htmlFor="email" className="me-2 text-white">Email: </Form.Label>
