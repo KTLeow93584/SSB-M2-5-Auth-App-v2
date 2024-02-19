@@ -12,7 +12,7 @@ export default function Home() {
     const updateUser = AuthUpdateUser();
 
     function logUserOut() {
-        updateUser({ user: null, token: null });
+        updateUser(null, null);
         navigate('/');
     }
 
