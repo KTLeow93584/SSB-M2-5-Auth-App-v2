@@ -1,4 +1,4 @@
-import { AuthGetUser, AuthUpdateUser } from '../AuthContext.jsx';
+import { AuthGetUser } from '../AuthContext.jsx';
 import NavPanel from '../components/NavPanel.jsx';
 
 import Container from 'react-bootstrap/Container';
@@ -6,11 +6,9 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 
 import Card from 'react-bootstrap/Card';
-import Button from 'react-bootstrap/Button';
 
 export default function Profile() {
     const user = AuthGetUser().user;
-    const authenticateUser = AuthUpdateUser();
 
     return (
         <>

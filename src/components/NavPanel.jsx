@@ -2,11 +2,19 @@ import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 
-import { AuthGetUser } from '../AuthContext.jsx';
+import { AuthGetUser, AuthUpdateUser } from '../AuthContext.jsx';
+import { useNavigate } from 'react-router-dom';
 
 export default function Home() {
     const user = AuthGetUser().user;
     const isLoggedIn = user !== null && user !== undefined;
+    const navigate = useNavigate();
+    const updateUser = AuthUpdateUser();
+
+    function logUserOut() {
+        updateUser({ user: null, token: null });
+        navigate('/');
+    }
 
     return (
         <Navbar expand="lg" style={{ backgroundColor: "#a7a7a7" }}>
@@ -18,7 +26,11 @@ export default function Home() {
                         <Nav.Link href="/">Home</Nav.Link>
                         {isLoggedIn ? <Nav.Link href="/dashboard">Dashboard</Nav.Link> : null}
                         {isLoggedIn ? <Nav.Link href="/profile">Profile</Nav.Link> : null}
-                        {isLoggedIn ? null : <Nav.Link href="/login">Login</Nav.Link>}
+                        {
+                            isLoggedIn ?
+                                <Nav.Link onClick={logUserOut}>Logout</Nav.Link> :
+                                <Nav.Link href="/login">Login</Nav.Link>
+                        }
                     </Nav>
                 </Navbar.Collapse>
             </Container>
